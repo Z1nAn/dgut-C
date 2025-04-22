@@ -60,7 +60,10 @@ unsigned long long getMangerMoney(User* __wages)
 
 
 //技术员工资计算
-
+unsigned long long WorkersMoney(User* __wages)
+{
+	return 100*__wages->time+ __wages->age * 35;
+}
 //销售员工资计算
 
 
