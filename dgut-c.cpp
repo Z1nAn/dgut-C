@@ -1,20 +1,67 @@
-﻿// dgut-c.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
+﻿#include<stdio.h>
 
-#include <iostream>
+#define MANGER 0
+#define WORKER 1
+#define SALEER 2
+#define SALEMANGER 3
 
-int main()
+#define MAN 0
+#define WOMAN 1
+
+//工资
+struct Wages
 {
-    std::cout << "Hello World!\n";
+	//工时
+	unsigned long long time;
+	//时薪
+	unsigned long long hourly_wages;
+	//基本工资
+	unsigned long long salary;
+}; typedef struct Wages Wages;
+
+// 用户
+struct User
+{
+	//工号
+	int code;
+	//名字
+	char* name;
+	size_t name_size;
+	//性别
+	size_t gender;
+	//职位
+	size_t work;
+	//年龄
+	size_t age;
+	//工资
+	Wages* wages;
+	//最后工资
+	unsigned long long (*getMoney)(const struct User* );
+	//下一个员工
+	Wages* pnext;
+}; typedef struct User User;
+
+// 部门 
+struct Department
+{
+	int code;
+	//部门人员
+	User* manager;
+	User* workers;
+	User* sales;
+	User* sales_manager;
+}; typedef struct Department Department;
+
+//经理工资计算
+unsigned long long getMangerMoney(User* __wages)
+{
+	return 8000 + __wages->age * 35;
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
 
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+//技术员工资计算
+
+//销售员工资计算
+
+
+//小时经理工资计算
