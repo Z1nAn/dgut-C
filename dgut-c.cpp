@@ -1,4 +1,4 @@
-﻿#include<stdio.h>
+﻿#include <stdio.h>
 
 #define MANGER 0
 #define WORKER 1
@@ -33,6 +33,8 @@ struct User
 	size_t work;
 	//年龄
 	size_t age;
+	//工时
+	size_t time;
 	//工资
 	Wages* wages;
 	//最后工资
@@ -60,7 +62,10 @@ unsigned long long getMangerMoney(User* __wages)
 
 
 //技术员工资计算
-
+unsigned long long getWorkersMoney(User* __wages)
+{
+	return 100*__wages->time + __wages->age * 35;
+}
 //销售员工资计算
 
 
